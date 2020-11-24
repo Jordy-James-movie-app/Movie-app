@@ -14,7 +14,7 @@ const getMovies = () => fetch(url)
 getMovies().then(movies => {
     let html = '<ul>';
     for (let movie of movies) {
-        html += `<li>${movie.name}</li>`
+        html += `<li>${movie.title}</li>`
     }
     html += '</ul>';
     document.write(html);
