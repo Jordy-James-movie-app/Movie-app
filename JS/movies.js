@@ -9,13 +9,14 @@ const getMovies = () => fetch(url)
     .then(data => console.log(data))
     .catch(console.error);
 
-// getMovies().then(console.log);
+getMovies().then(console.log);
 
-getMovies().then(movies => {
-    let html = '<ul>';
-    for (let movie of movies) {
-        html += `<li>${movie.title}</li>`
-    }
-    html += '</ul>';
-    document.write(html);
-});
+// getMovies().then(movies => {
+//     let html = '<ul>';
+//     for (let movie of movies) {
+//         html += `<li>${movie.title}</li>`
+//     }
+//     html += '</ul>';
+//     document.write(html);
+// });
+
