@@ -1,0 +1,7 @@
+li{
+    border: 2.5px solid black;
+    margin-bottom: 5em;
+    margin-top: 5em;
+    position: relative;
+    list-style: none;
+}
