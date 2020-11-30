@@ -16,9 +16,9 @@ function moviesRequest () {
             let html = '<ul>'
             for (let movie of movies) {
                 html += `<div ><li class="movie col-12 col-md-6 col-xl-4"><div class = "card-body"></div>`
-                html += '<h4 class = "card-title">' + movie.title + '</h4>';
-                html += '<h6 class = "card-title">' + movie.rating + '</h6>';
-                html += '<p class = "card-text">' + movie.plot + '</p>';
+                html += '<h4>Title:</h4> <h4 class = "card-title" style="font-weight: normal">'  + movie.title + '</h4>';
+                html += '<h4>Rating:</h4><h6 class = "card-title">' + movie.rating + '</h6>';
+                html += '<h4>Description:</h4><p class = "card-text">' + movie.plot + '</p>';
             }
             html += '</ul>';
             movielist.html(html);
@@ -32,16 +32,32 @@ moviesRequest()
 //
 // }
 
-// event listener for add movie button
-$("#add").click(function (event) {
+//event listeners for add movie button
+$("#add").click(function (event){
     event.preventDefault()
     let addMovieTitle = document.getElementById("movieTitle").value;
-    console.log(addMovieTitle);
     let addMovieRating = document.getElementById("movieRating").value;
-    console.log(addMovieRating);
     let addMovieDescription = document.getElementById("movieDescription").value;
-    console.log(addMovieDescription);
+    const addedMovie = {
+        title: addMovieTitle,
+        rating: addMovieRating,
+        plot: addMovieDescription
+    };
+    const postAddedMovie = {
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/jason',
+        },
+        body: JSON.stringify(addedMovie),
+    };
+    fetch(moviesUrl, postAddedMovie)
+        .then(response => console.log(response))
+        .catch(error => console.log(error));
+
 });
+
+
+
 
 //define function that takes in movie object
 //make a fetch request to the correct url to post.
