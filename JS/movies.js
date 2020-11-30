@@ -36,7 +36,7 @@ function moviesRequest () {
                     '                    <label for="movieDescription">Movie description</label>\n' +
                     '                    <textarea class="form-control" id="movieDescription" rows="3" placeholder="Tell us about this movie!"></textarea>\n' +
                     '                </div>\n' +
-                    '                <button id="add">Change movie information</button>\n' +
+                    '                <button id="edit">Change movie information</button>\n' +
                     '            </form><br>'
                 html += '<h5>Wanna remove a movie? click the button below!</h5><br><button id="delete">Delete saved movie</button>';
             }
@@ -86,9 +86,32 @@ $("#delete").click(function (event){
             'Content-Type': 'application/json'
         }
     }
+        fetch(moviesUrl, deleteMovies)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+
 });
 
-
+$("#edit").click(function (event){
+    event.preventDefault();
+    let addMovieTitle = document.getElementById("movieTitle").value;
+    let addMovieRating = document.getElementById("movieRating").value;
+    let addMovieDescription = document.getElementById("movieDescription").value;
+    const editMovie = {
+        title: addMovieTitle,
+        rating: addMovieRating,
+        plot: addMovieDescription
+    };
+    const postEditMovies = {
+        Method: 'PUT',
+        header: {
+            'Content-Type': 'application/json'
+        }
+    }
+fetch(moviesUrl, postEditMovies)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+});
 
 
 
