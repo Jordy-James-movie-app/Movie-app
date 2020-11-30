@@ -26,3 +26,6 @@ function addMovies() {
 
 }
 
+
+
+addToList.addEventListener('click', addCoffees)

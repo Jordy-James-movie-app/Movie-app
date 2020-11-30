@@ -24,13 +24,13 @@
     <div class="row">
         <div class="col-12">
             <form>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Movie title</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Movie title">
+                <div class="form-group" id="title">
+                    <label for="movieTitle">Movie title</label>
+                    <input class="form-control" id="movieTitle" placeholder="Movie title">
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Rating</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                <div class="form-group" id="rating">
+                    <label for="rating">Rating</label>
+                    <select class="form-control" id="movieRating">
                         <option>1 star</option>
                         <option>2 stars</option>
                         <option>3 stars</option>
@@ -38,11 +38,11 @@
                         <option>5 stars</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Movie description</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Tell us about this movie!"></textarea>
+                <div class="form-group" id="Description">
+                    <label for="movieDescription">Movie description</label>
+                    <textarea class="form-control" id="movieDescription" rows="3" placeholder="Tell us about this movie!"></textarea>
                 </div>
-                <button>Add your movie!</button>
+                <button id="add">Add your movie!</button>
             </form>
         </div>
     </div>
