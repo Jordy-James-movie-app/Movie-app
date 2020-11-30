@@ -3,8 +3,6 @@
 const moviesUrl = "https://ethereal-generated-marshmallow.glitch.me/movies"
 //Fetch for movies
 const getMovies = fetch(`${moviesUrl}`)
-
-
 // Populates movies to cards
 function moviesRequest () {
     let movielist = $("#movieList")
@@ -15,10 +13,32 @@ function moviesRequest () {
         .then(movies => {
             let html = '<ul>'
             for (let movie of movies) {
-                html += `<div ><li class="movie col-12 col-md-6 col-xl-4"><div class = "card-body"></div>`
+                html += `<div ><li class="movie col-12 col-md-6 col-xl-4"><img src="${movie.poster}"><div class = "card-body"></div>`
                 html += '<h4>Title:</h4> <h4 class = "card-title" style="font-weight: normal">'  + movie.title + '</h4>';
                 html += '<h4>Rating:</h4><h6 class = "card-title">' + movie.rating + '</h6>';
                 html += '<h4>Description:</h4><p class = "card-text">' + movie.plot + '</p>';
+                html += '<h5>Made a mistake? Change the movie information by filling out the new information below!</h5><br><form>\n' +
+                    '                <div class="form-group" id="title">\n' +
+                    '                    <label for="movieTitle">Movie title</label>\n' +
+                    '                    <input class="form-control" id="movieTitle" placeholder="Movie title">\n' +
+                    '                </div>\n' +
+                    '                <div class="form-group" id="rating">\n' +
+                    '                    <label for="rating">Rating</label>\n' +
+                    '                    <select class="form-control" id="movieRating">\n' +
+                    '                        <option value="1">1 star</option>\n' +
+                    '                        <option value="2">2 stars</option>\n' +
+                    '                        <option value="3">3 stars</option>\n' +
+                    '                        <option value="4">4 stars</option>\n' +
+                    '                        <option value="4">5 stars</option>\n' +
+                    '                    </select>\n' +
+                    '                </div>\n' +
+                    '                <div class="form-group" id="Description">\n' +
+                    '                    <label for="movieDescription">Movie description</label>\n' +
+                    '                    <textarea class="form-control" id="movieDescription" rows="3" placeholder="Tell us about this movie!"></textarea>\n' +
+                    '                </div>\n' +
+                    '                <button id="add">Change movie information</button>\n' +
+                    '            </form><br>'
+                html += '<h5>Wanna remove a movie? click the button below!</h5><br><button id="delete">Delete saved movie</button>';
             }
             html += '</ul>';
             movielist.html(html);
@@ -46,7 +66,7 @@ $("#add").click(function (event){
     const postAddedMovie = {
         method: 'POST',
         headers: {
-           'Content-Type': 'application/jason',
+           'Content-Type': 'application/json',
         },
         body: JSON.stringify(addedMovie),
     };
@@ -54,7 +74,20 @@ $("#add").click(function (event){
         .then(response => console.log(response))
         .catch(error => console.log(error));
 
+    return moviesRequest()
 });
+
+//delete button
+$("#delete").click(function (event){
+    event.preventDefault();
+    const deleteMovies = {
+        Method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+});
+
 
 
 
