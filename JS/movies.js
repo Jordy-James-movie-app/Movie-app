@@ -13,7 +13,7 @@ function moviesRequest () {
         .then(movies => {
             let html = '<ul>'
             for (let movie of movies) {
-                html += `<div ><li class="movie col-12 col-md-6 col-xl-4"><img src="${movie.poster}"><div class = "card-body"></div>`
+                html += `<div ><li class="movie col-12 col-md-6 col-xl-4"><img src="https://loremflickr.com/320/240"><div class = "card-body"></div>`
                 html += '<h4>Title:</h4> <h4 class = "card-title" style="font-weight: normal">'  + movie.title + '</h4>';
                 html += '<h4>Rating:</h4><h6 class = "card-title">' + movie.rating + '</h6>';
                 html += '<h4>Description:</h4><p class = "card-text">' + movie.plot + '</p>';
@@ -38,7 +38,7 @@ function moviesRequest () {
                     '                </div>\n' +
                     '                <button id="edit">Change movie information</button>\n' +
                     '            </form><br>'
-                html += '<h5>Wanna remove a movie? click the button below!</h5><br><button id="delete">Delete saved movie</button>';
+                html += '<h5>Wanna remove a movie? click the button below!</h5><br><button class= id="delete">Delete saved movie</button>';
             }
             html += '</ul>';
             movielist.html(html);
@@ -48,9 +48,6 @@ function moviesRequest () {
 }
 
 moviesRequest()
-// function addMovies() {
-//
-// }
 
 //event listeners for add movie button
 $("#add").click(function (event){
